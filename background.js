@@ -1,12 +1,19 @@
-// Two varieties of code review URLs:
+// Three varieties of code review URLs:
 //   1) http://codereview.chromium.org/###/
 //   2) http://chromiumcodereview.appspot.com/###/
-var chromiumRegexp = /^https?:\/\/codereview\.chromium\.org\/[0-9]+\/?$/;
-var appspotRegexp = /^https?:\/\/chromiumcodereview\.appspot\.com\/[0-9]+\/?$/;
+//   3) http://chromereviews.googleplex.com/###/
+var regexps = [
+  /^https?:\/\/codereview\.chromium\.org\/[0-9]+\/?$/,
+  /^https?:\/\/chromiumcodereview\.appspot\.com\/[0-9]+\/?$/,
+  /^https?:\/\/chromereviews\.googleplex\.com\/[0-9]+\/?$/
+];
 
 function isRietveldUrl(tabId, changeInfo, tab) {
-  if (chromiumRegexp.test(tab.url) || appspotRegexp.test(tab.url)) {
-    chrome.pageAction.show(tabId);
+  for (var i = 0; i < regexps.length; ++i) {
+    if (regexps[i].test(tab.url)) {
+      chrome.pageAction.show(tabId);
+      return;
+    }
   }
 }
 
