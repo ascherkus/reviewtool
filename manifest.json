@@ -1,6 +1,6 @@
 {
   "name": "Chromium Review Tool",
-  "version": "1.1",
+  "version": "1.2",
   "manifest_version": 2,
   "description": "Opens all side-by-side diffs in separate tabs.",
   "background": {
@@ -15,7 +15,8 @@
     "tabs",
     "*://codereview.chromium.org/*",
     "*://chromiumcodereview.appspot.com/*",
-    "*://chromereviews.googleplex.com/*"
+    "*://chromereviews.googleplex.com/*",
+    "*://webrtc-codereview.appspot.com/*"
   ],
   "page_action" : {
     "default_icon": "icon.png",
